@@ -26,8 +26,8 @@ void setup() {
     score = 0;
 }
 
-void draw() {
-    system("cls");  // Clear the console (Windows specific)
+void board() {
+    system("cls"); 
     for (int i = 0; i < width+1 ; i++) {
         cout << "#";
     }
@@ -46,7 +46,7 @@ void draw() {
 
                 bool print = false;
 
-                for(int k=0;k<nTail;k++){
+                for(int k=0;k<nTail;k++){ // Increasing size of the snake
                     if(i==yTail[k] && j==xTail[k]){
                         cout<<"O";
                         print=true;
@@ -124,11 +124,11 @@ void logic() {
         y++; 
         break;
     }
-
-    if (x >= width) x = 0; // Wrap around
-    if (x < 0) x = width - 1; // Wrap around
-    if (y >= height) y = 0; // Wrap around
-    if (y < 0) y = height - 1; // Wrap around
+    // wrap around
+    if (x >= width) x = 0; 
+    if (x < 0) x = width - 1; 
+    if (y >= height) y = 0; 
+    if (y < 0) y = height - 1; 
 
     for(int k=0;k<nTail;k++){
         if(x==xTail[k] && y==yTail[k]){
@@ -147,7 +147,7 @@ void logic() {
 int main() {
     setup();
     while (!gameover) {
-        draw();
+        board();
         input();
         logic();
         // Sleep for a short period to control game speed (system-specific)
